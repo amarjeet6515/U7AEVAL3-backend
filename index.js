@@ -1,9 +1,7 @@
 const express = require('express');
-const {userController} = require("./routes/user.routes")
+const { postRouter} = require("./routes/post.routes")
 const {connection} = require("./config/db")
-const {authenticate} = require('./middlewares/authentication');
 
-const { blogRouter } = require('./routes/blog.routes');
 const cors = require('cors');
  
 const app = express();
@@ -15,11 +13,8 @@ app.use(express.json())
 
 
 
-app.use("/", userController);
+app.use("/", postRouter);
 
-// app.use(authenticate)
-
-app.use("/blog",authenticate, blogRouter)
 
 connection.then(()=>{
     app.listen(process.env.PORT,()=>{
