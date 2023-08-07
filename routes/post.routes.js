@@ -21,7 +21,6 @@ postRouter.post("/post", async (req, res) => {
 
 postRouter.delete("/delete/:_id", async (req, res) => {
     const { _id } = req.params
-    const ad = await PostModel.findOne({ _id: _id })
 
         await PostModel.findOneAndDelete({ _id: _id })
         res.status(200).send("Deleted Successfully")
